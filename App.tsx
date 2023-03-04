@@ -8,9 +8,6 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 // imports of my screens 
-import SigninScreen from './src/screens/SigninScreen/SigninScreen';
-import SignUPScreen from './src/screens/CreateAccountScreen/SignupScreen';
-import RestPasswordScreen from './src/screens/ResetPasswordScreen/ResetPasswordScreen';
 import Navagation from './src/navagation/index'
 
 import {
