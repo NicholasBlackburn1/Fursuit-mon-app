@@ -9,7 +9,7 @@ import React from 'react';
 import type {PropsWithChildren} from 'react';
 // imports of my screens 
 import SigninScreen from './src/screens/SigninScreen/SigninScreen';
-import SignUPScreen from './src/screens/CreateAccountScreen';
+import SignUPScreen from './src/screens/CreateAccountScreen/SignupScreen';
 
 
 import {
@@ -69,7 +69,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-     <SigninScreen></SigninScreen>
+     <SignUPScreen></SignUPScreen>
     </SafeAreaView>
   );
 }
