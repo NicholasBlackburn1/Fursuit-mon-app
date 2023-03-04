@@ -11,7 +11,7 @@ import type {PropsWithChildren} from 'react';
 import SigninScreen from './src/screens/SigninScreen/SigninScreen';
 import SignUPScreen from './src/screens/CreateAccountScreen/SignupScreen';
 import RestPasswordScreen from './src/screens/ResetPasswordScreen/ResetPasswordScreen';
-
+import Navagation from './src/navagation/index'
 
 import {
   SafeAreaView,
@@ -70,7 +70,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-     <RestPasswordScreen></RestPasswordScreen>
+     <Navagation></Navagation>
     </SafeAreaView>
   );
 }
