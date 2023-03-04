@@ -12,6 +12,7 @@ import React, {useState} from 'react'
 import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
+import { useNavigation } from '@react-navigation/native';
 
 const SignupScreen = () => {
 
@@ -21,6 +22,8 @@ const SignupScreen = () => {
   const [password, setPassword] = useState('');
   const [passwordrepeat, setPasswordrepeat] = useState('');
   
+  const navagation = useNavigation();
+
   
   const onregisterPress = () => {
     console.warn("registering user...");
@@ -39,6 +42,7 @@ const SignupScreen = () => {
   const onSignInpressed = () => {
 
     console.warn("redirect to login page");
+    navagation.navigate("login");
   };
 
   return (
