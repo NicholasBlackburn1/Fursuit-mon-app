@@ -22,6 +22,14 @@ const SigninScreen = () => {
 
   const {height} = useWindowDimensions();
 
+  // allows users to reset passwords and login 
+  const onSignInpressed = () => {};
+
+  const onForgotPassword = () =>{};
+
+
+
+
   return (
     <View style={styles.root}> 
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
@@ -29,7 +37,9 @@ const SigninScreen = () => {
     <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
     <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
 
-    <LoginButton/>
+    <LoginButton buttontext="Sign in" onPress={onSignInpressed}/>
+
+    <LoginButton buttontext="Forgot password" onPress={onForgotPassword} type = "teriary"/>
     </View>
   )
 }
