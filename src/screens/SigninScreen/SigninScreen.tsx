@@ -28,6 +28,8 @@ const SigninScreen = () => {
 
     <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
     <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
+
+    <LoginButton/>
     </View>
   )
 }
