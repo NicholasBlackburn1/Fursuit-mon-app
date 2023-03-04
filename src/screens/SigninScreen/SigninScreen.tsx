@@ -7,7 +7,9 @@
 import {View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native';
 import React from 'react'
 
-import Logo from '../../../assets/images/logo.png'
+import Logo from '../../../assets/images/logo.png';
+
+import Logininput from '../../componets/LoginInput';
 
 
 const SigninScreen = () => {
@@ -16,8 +18,8 @@ const SigninScreen = () => {
   return (
     <View style={styles.root}> 
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
-      <Text> help </Text>
 
+    <Logininput></Logininput>
     </View>
   )
 }
