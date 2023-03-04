@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 // custom inputs 
 import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
-
+import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
 
 const SignupScreen = () => {
 
@@ -27,32 +27,61 @@ const SignupScreen = () => {
   };
 
   const onPrivacyPress = () => {
-
-    console.warn("show privacy polocy.");
+    console.warn('show privacy polocy.');
   };
-  
+
+
+  const onSignInpressed = () => {
+
+    console.warn("redirect to login page");
+  };
 
   return (
     <ScrollView>
       <View style={styles.root}> 
       <Text style={styles.title}>Create an Account</Text>
 
+        <LoginInput
+          placeholder="Username"
+          value={username}
+          setValue={setUsername}
+        />
+        <LoginInput
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
+          issecure={false}
+        />
 
-      <LoginInput placeholder="Username" value ={username} setValue={setUsername}/>
-      <LoginInput placeholder="Email" value ={email} setValue={setEmail} issecure= {false}/>
+        <LoginInput
+          placeholder="Password"
+          value={password}
+          setValue={setPassword}
+          issecure={true}
+        />
+        <LoginInput
+          placeholder="Password Repeat"
+          value={passwordrepeat}
+          setValue={setPasswordrepeat}
+          issecure={true}
+        />
 
-      <LoginInput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
-      <LoginInput placeholder="Password Repeat" value ={passwordrepeat} setValue={setPasswordrepeat} issecure= {true}/>
-
-      <LoginButton buttontext="Register" onPress={onregisterPress}/>
+        <LoginButton buttontext="Register" onPress={onregisterPress} />
 
       <Text styles={styles}>
-        By registering, you accept all our 
-        <Text style={styles.link} onPress={onTermsPress}>Terms of Use </Text> and 
-        <Text style={styles.link}  onPress={onPrivacyPress}>Privacy Policy</Text> 
-        <Text style={styles.furry}>*happy furry Noises*</Text>
-        
-        </Text>
+          By registering, you accept all our
+          <Text style={styles.link} onPress={onTermsPress}>
+            Terms of Use{' '}
+          </Text>{' '}
+          and
+          <Text style={styles.link} onPress={onPrivacyPress}>
+            Privacy Policy
+          </Text>
+          <Text style={styles.furry}>*happy furry Noises*</Text>
+      </Text>
+
+      <SocialSignButtons/>
+      <LoginButton buttontext="Have An Account? Sign in." onPress={onSignInpressed} type = "teriary"/>
       </View>
     </ScrollView>
   )
