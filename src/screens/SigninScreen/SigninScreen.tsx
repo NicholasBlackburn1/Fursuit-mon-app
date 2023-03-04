@@ -41,7 +41,11 @@ const SigninScreen = () => {
 
     console.warn("sending login to apple");
   };
+  
+  const onSignUp = () => {
 
+    console.warn(" new user .. ned to create user account..");
+  };
 
 
 
@@ -58,7 +62,9 @@ const SigninScreen = () => {
 
 
     <LoginButton buttontext="Sign in With google" onPress={onSignInWithGoogle} bgcolor = "#FAE9EA" fgcolor="#DD4D44"/>
-    <LoginButton buttontext="Sign in With apple" onPress={onSignInWithApple}/>
+    <LoginButton buttontext="Sign in With apple" onPress={onSignInWithApple} bgcolor = "##e3e3e3" fgcolor="#363636"/>
+
+    <LoginButton buttontext="Don't Have an Account?" onPress={onSignUp} type = "teriary"/>
 
     </View>
   )
