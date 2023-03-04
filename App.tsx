@@ -6,9 +6,9 @@
  */
 
 import React from 'react';
-// imports all my screens
-import signinscreen from './src/screens/SigninScreen/SigninScreen';
 import type {PropsWithChildren} from 'react';
+// imports of my screens 
+import SigninScreen from './src/screens/SigninScreen/SigninScreen';
 import {
   SafeAreaView,
   ScrollView,
@@ -66,7 +66,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <signinscreen />
+     <SigninScreen></SigninScreen>
     </SafeAreaView>
   );
 }
