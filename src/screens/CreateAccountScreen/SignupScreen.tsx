@@ -18,7 +18,17 @@ const SignupScreen = () => {
   
   
   const onregisterPress = () => {
-    console.warn("registering user...")
+    console.warn("registering user...");
+  };
+
+  // for legal stuff press
+  const onTermsPress = () => {
+    console.warn("show  terms of use.");
+  };
+
+  const onPrivacyPress = () => {
+
+    console.warn("show privacy polocy.");
   };
   
 
@@ -37,7 +47,12 @@ const SignupScreen = () => {
       <LoginButton buttontext="Register" onPress={onregisterPress}/>
 
       <Text styles={styles}>
-        By registering, you accept all our <Text style={styles.link}>Terms of Use and Privacy Policy</Text> *happy furry Noises*</Text>
+        By registering, you accept all our 
+        <Text style={styles.link} onPress={onTermsPress}>Terms of Use </Text> and 
+        <Text style={styles.link}  onPress={onPrivacyPress}>Privacy Policy</Text> 
+        <Text style={styles.furry}>*happy furry Noises*</Text>
+        
+        </Text>
       </View>
     </ScrollView>
   )
@@ -61,8 +76,18 @@ const styles = StyleSheet.create({
     margin: 10,
 
   },
-  link:{
+  text:{
+    color: 'gray',
+    marginVertical:10,
 
+  },
+
+
+  link:{
+    color: '#FDB075'
+  },
+  furry:{
+    fontStyle: 'italic',
   },
 });
 
