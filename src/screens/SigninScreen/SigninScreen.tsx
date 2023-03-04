@@ -9,7 +9,9 @@ import React, {useState} from 'react'
 
 import Logo from '../../../assets/images/logo.png';
 
-import Logininput from '../../componets/Textinput'
+// custom inputs 
+import Logininput from '../../componets/Textinput';
+import LoginButton from '../../componets/Button';
 
 
 const SigninScreen = () => {
