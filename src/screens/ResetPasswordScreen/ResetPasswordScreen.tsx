@@ -13,7 +13,7 @@ import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
 
-const SignupScreen = () => {
+const ResetPasswordScreen = () => {
 
   //sets up use sates
   const [username, setUsername] = useState('');
@@ -44,7 +44,7 @@ const SignupScreen = () => {
   return (
     <ScrollView>
       <View style={styles.root}> 
-      <Text style={styles.title}>Create Your Account</Text>
+      <Text style={styles.title}>Reset your password</Text>
 
         <LoginInput
           placeholder="Username"
