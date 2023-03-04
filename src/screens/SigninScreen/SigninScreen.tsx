@@ -13,6 +13,7 @@ import Logo from '../../../assets/images/logo.png';
 import Logininput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 
+import { useNavigation } from '@react-navigation/native';
 
 const SigninScreen = () => {
 
@@ -22,29 +23,24 @@ const SigninScreen = () => {
 
   const {height} = useWindowDimensions();
 
+  const navagation = useNavigation();
+
   // allows users to reset passwords and login 
   const onSignInpressed = () => {
-
+    // vladate user 
     console.warn("sending login to server");
+    //navagation.navigate("home")
   };
 
   const onForgotPassword = () =>{
     console.warn("time to reset password in db..");
-  };
-
-  const onSignInWithGoogle = () => {
-
-    console.warn("sending login to google");
-  };
-
-  const onSignInWithApple = () => {
-
-    console.warn("sending login to apple");
+    navagation.navigate("Reset password");
   };
   
   const onSignUp = () => {
 
     console.warn(" new user .. need to create user account..");
+    navagation.navigate("signup");
   };
 
 
@@ -60,10 +56,6 @@ const SigninScreen = () => {
     
     <LoginButton buttontext="Sign in" onPress={onSignInpressed}/>
     <LoginButton buttontext="Forgot password" onPress={onForgotPassword} type = "teriary"/>
-
-
-    <LoginButton buttontext="Sign in With google" onPress={onSignInWithGoogle} bgcolor = "#FAE9EA" fgcolor="#DD4D44"/>
-    <LoginButton buttontext="Sign in With apple" onPress={onSignInWithApple} bgcolor = "##e3e3e3" fgcolor="#363636"/>
 
     <LoginButton buttontext="Don't Have an Account?" onPress={onSignUp} type = "teriary"/>
 

@@ -66,9 +66,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-     <Navagation></Navagation>
-    </SafeAreaView>
+    <Navagation/>
   );
 }
 

@@ -9,17 +9,24 @@ import SignUPScreen from '../screens/CreateAccountScreen/SignupScreen';
 import RestPasswordScreen from '../screens/ResetPasswordScreen/ResetPasswordScreen';
 
 const Stack = createNativeStackNavigator();
+
 const Navagation = () => {
   return (
-    <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={SigninScreen} />
-      <Stack.Screen name="Create Account" component={SignUPScreen} />
-      <Stack.Screen name="resetProfile" component={RestPasswordScreen} />
+     <NavigationContainer>
+
+
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+
+      <Stack.Screen name ="login" component={SigninScreen}/>
+      <Stack.Screen name ="signup" component={SignUPScreen}/>
+      <Stack.Screen name ="Reset password" component={RestPasswordScreen}/>
+      </Stack.Navigator>
+
+     </NavigationContainer>
+  
      
-    </Stack.Navigator>
-    </NavigationContainer>
+    
   )
 }
 
-export default Navagation
+export default Navagation;

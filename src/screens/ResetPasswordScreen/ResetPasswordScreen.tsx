@@ -26,6 +26,7 @@ const ResetPasswordScreen = () => {
   // for legal stuff press
   const onbacktosignin = () => {
     console.warn("takes u back to the sign in");
+    
   };
 
 
@@ -33,7 +34,7 @@ const ResetPasswordScreen = () => {
     <ScrollView>
       <View style={styles.root}> 
       <Text style={styles.title}>Reset your password</Text>
-      
+
         <LoginInput
           placeholder="Password"
           value={password}

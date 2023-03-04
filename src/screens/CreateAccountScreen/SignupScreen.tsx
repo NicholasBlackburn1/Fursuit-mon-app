@@ -85,7 +85,6 @@ const SignupScreen = () => {
           <Text style={styles.furry}>*happy furry Noises*</Text>
       </Text>
 
-      <SocialSignButtons/>
       <LoginButton buttontext="Have An Account? Sign in." onPress={onSignInpressed} type = "teriary"/>
       </View>
     </ScrollView>
