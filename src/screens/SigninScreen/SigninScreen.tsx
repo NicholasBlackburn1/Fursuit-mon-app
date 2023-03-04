@@ -23,9 +23,24 @@ const SigninScreen = () => {
   const {height} = useWindowDimensions();
 
   // allows users to reset passwords and login 
-  const onSignInpressed = () => {};
+  const onSignInpressed = () => {
 
-  const onForgotPassword = () =>{};
+    console.warn("sending login to server");
+  };
+
+  const onForgotPassword = () =>{
+    console.warn("time to reset password in db..");
+  };
+
+  const onSignInWithGoogle = () => {
+
+    console.warn("sending login to google");
+  };
+
+  const onSignInWithApple = () => {
+
+    console.warn("sending login to apple");
+  };
 
 
 
@@ -37,9 +52,14 @@ const SigninScreen = () => {
     <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
     <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
 
+    
     <LoginButton buttontext="Sign in" onPress={onSignInpressed}/>
-
     <LoginButton buttontext="Forgot password" onPress={onForgotPassword} type = "teriary"/>
+
+
+    <LoginButton buttontext="Sign in With google" onPress={onSignInWithGoogle} bgcolor = "#FAE9EA" fgcolor="#DD4D44"/>
+    <LoginButton buttontext="Sign in With apple" onPress={onSignInWithApple}/>
+
     </View>
   )
 }

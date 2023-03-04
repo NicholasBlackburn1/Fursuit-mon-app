@@ -1,14 +1,24 @@
 import { View, Text, StyleSheet, Pressable} from 'react-native'
 import React from 'react'
 
-const LoginButton = ({buttontext,onPress, type ="primary"}) => {
+const LoginButton = ({buttontext,onPress, type ="primary",bgcolor,fgcolor}) => {
 
 
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.container, styles[`container_${type}`]]}>
-      <Text style={[styles.text, styles[`text_${type}`]]}>{buttontext}</Text>
+      style={[
+        styles.container,
+        styles[`container_${type}`],
+        bgcolor ? {backgroundColor: bgcolor} : {},
+      ]}>
+      <Text style={
+        [styles.text, 
+      styles[`text_${type}`],
+        fgcolor ? {color: fgcolor} : {},
+        ]}>
+        {buttontext}
+      </Text>
     </Pressable>
   )
 }
