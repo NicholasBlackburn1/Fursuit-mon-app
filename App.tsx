@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import signinscreen from './src/screens/SigninScreen/SigninScreen';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
