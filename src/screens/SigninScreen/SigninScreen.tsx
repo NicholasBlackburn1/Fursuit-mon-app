@@ -4,7 +4,7 @@
  * it displays logo and login buttons  email and username
  */
 
-import {View, Text, Image, StyleSheet, useWindowDimensions} from 'react-native';
+import {View, Text, Image, StyleSheet, useWindowDimensions, ScrollView} from 'react-native';
 import React, {useState} from 'react'
 
 import Logo from '../../../assets/images/logo.png';
@@ -44,12 +44,13 @@ const SigninScreen = () => {
   
   const onSignUp = () => {
 
-    console.warn(" new user .. ned to create user account..");
+    console.warn(" new user .. need to create user account..");
   };
 
 
 
   return (
+    <ScrollView>
     <View style={styles.root}> 
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
 
@@ -67,6 +68,7 @@ const SigninScreen = () => {
     <LoginButton buttontext="Don't Have an Account?" onPress={onSignUp} type = "teriary"/>
 
     </View>
+    </ScrollView>
   )
 }
 
