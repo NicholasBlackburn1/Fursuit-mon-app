@@ -3,8 +3,8 @@ import React from 'react'
 
 const LoginButton = () => {
   return (
-    <View>
-      <Text>custom buttom</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}></Text>
     </View>
   )
 }
@@ -12,7 +12,9 @@ const LoginButton = () => {
 const styles = StyleSheet.create({
     
     container:{
-
+        backgroundColor: '#3B71F3',
+        width: '100%',
+        padding: 15,
     },
     text:{},
 
