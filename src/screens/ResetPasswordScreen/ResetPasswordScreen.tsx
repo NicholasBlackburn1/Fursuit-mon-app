@@ -15,9 +15,6 @@ import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin'
 
 const ResetPasswordScreen = () => {
 
-  //sets up use sates
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordrepeat, setPasswordrepeat] = useState('');
   
@@ -27,37 +24,17 @@ const ResetPasswordScreen = () => {
   };
 
   // for legal stuff press
-  const onTermsPress = () => {
-    console.warn("show  terms of use.");
+  const onbacktosignin = () => {
+    console.warn("takes u back to the sign in");
   };
 
-  const onPrivacyPress = () => {
-    console.warn('show privacy polocy.');
-  };
-
-
-  const onSignInpressed = () => {
-
-    console.warn("redirect to login page");
-  };
 
   return (
     <ScrollView>
       <View style={styles.root}> 
       <Text style={styles.title}>Reset your password</Text>
 
-        <LoginInput
-          placeholder="Username"
-          value={username}
-          setValue={setUsername}
-        />
-        <LoginInput
-          placeholder="Email"
-          value={email}
-          setValue={setEmail}
-          issecure={false}
-        />
-
+   
         <LoginInput
           placeholder="Password"
           value={password}
@@ -71,22 +48,12 @@ const ResetPasswordScreen = () => {
           issecure={true}
         />
 
-        <LoginButton buttontext="Register" onPress={onregisterPress} />
+        <LoginButton buttontext="Reset your password" onPress={onregisterPress} />
 
-      <Text styles={styles}>
-          By registering, you accept all our
-          <Text style={styles.link} onPress={onTermsPress}>
-            Terms of Use{' '}
-          </Text>{' '}
-          and
-          <Text style={styles.link} onPress={onPrivacyPress}>
-            Privacy Policy
-          </Text>
-          <Text style={styles.furry}>*happy furry Noises*</Text>
-      </Text>
+  
 
-      <SocialSignButtons/>
-      <LoginButton buttontext="Have An Account? Sign in." onPress={onSignInpressed} type = "teriary"/>
+    
+      <LoginButton buttontext="Back to Sign in." onPress={onbacktosignin} type = "teriary"/>
       </View>
     </ScrollView>
   )
@@ -125,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignupScreen
+export default ResetPasswordScreen
