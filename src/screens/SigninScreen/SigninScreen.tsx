@@ -9,7 +9,7 @@ import React, {useState} from 'react'
 
 import Logo from '../../../assets/images/logo.png';
 
-import Logininput from '../../componets/LoginInput';
+import Logininput from '../../componets/Textinput'
 
 
 const SigninScreen = () => {
@@ -24,7 +24,8 @@ const SigninScreen = () => {
     <View style={styles.root}> 
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
 
-    <Logininput placeholder="Username"/>
+    <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
+    <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
     </View>
   )
 }

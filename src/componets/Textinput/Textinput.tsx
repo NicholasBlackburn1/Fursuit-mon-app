@@ -1,13 +1,14 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
-const LoginInput = ({value,setValue, placeholder}) => {
+const LoginInput = ({name,setValue, placeholder, issecure}) => {
   return (
     <View style={styles.container}>
-      <TextInput value={value}
+      <TextInput value={name}
       onChangeText={setValue}
       placeholder={placeholder}
-      style={styles.input} />
+      style={styles.input} 
+      secureTextEntry={issecure}/>
     </View>
   );
 }
