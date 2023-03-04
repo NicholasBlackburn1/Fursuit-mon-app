@@ -3,9 +3,8 @@ import React from 'react'
 
 const LoginInput = () => {
   return (
-    <View>
-      <Text>LoginInput</Text>
-      <TextInput placeholder='placeholder'/>
+    <View style={styles.container}>
+      <TextInput placeholder="placeholder" style={styles.input} />
     </View>
   );
 }
@@ -13,14 +12,19 @@ const LoginInput = () => {
 
 // allows me to set the style of the componet 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'White',
+    width: '100%',
 
-  container:{
-    
+    borderColor:"#E8E8E8",
+    borderWidth: 1,
+    borderRadius:  5,
+
+    paddingHorizontal: 10,
+    marginVertical: 10,
   },
 
-  input:{
-
-  },
+  input: {},
 });
 
 
