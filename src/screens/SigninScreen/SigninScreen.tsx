@@ -40,7 +40,7 @@ const SigninScreen = () => {
   const onSignUp = () => {
 
     console.warn(" new user .. need to create user account..");
-    navagation.navigate("home");
+    navagation.navigate("network");
   };
 
 

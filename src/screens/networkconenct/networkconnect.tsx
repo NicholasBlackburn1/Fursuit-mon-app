@@ -28,7 +28,7 @@ import {
     return (
       <ScrollView>
         <View style={styles.root}>
-        <Text style={styles.title}>Mascot Info for {suitname}</Text>
+        <Text style={styles.title}> Configure Mascot Connection</Text>
 
         </View>
       </ScrollView>
