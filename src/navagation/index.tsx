@@ -3,10 +3,11 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// screens 
+// screens
 import SigninScreen from '../screens/SigninScreen/SigninScreen';
 import SignUPScreen from '../screens/CreateAccountScreen/SignupScreen';
 import RestPasswordScreen from '../screens/ResetPasswordScreen/ResetPasswordScreen';
+import networkconnect from '../screens/networkconenct/networkconnect';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,12 +21,13 @@ const Navagation = () => {
       <Stack.Screen name ="login" component={SigninScreen}/>
       <Stack.Screen name ="signup" component={SignUPScreen}/>
       <Stack.Screen name ="Reset password" component={RestPasswordScreen}/>
+      <Stack.Screen name ="network" component={networkconnect}/>
       </Stack.Navigator>
 
      </NavigationContainer>
-  
-     
-    
+
+
+
   )
 }
 

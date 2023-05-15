@@ -1,6 +1,6 @@
 /***
- * 
- * this is the sign in screen 
+ *
+ * this is the sign in screen
  * it displays logo and login buttons  email and username
  */
 
@@ -9,7 +9,7 @@ import React, {useState} from 'react'
 
 import Logo from '../../../assets/images/logo.png';
 
-// custom inputs 
+// custom inputs
 import Logininput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 
@@ -25,9 +25,9 @@ const SigninScreen = () => {
 
   const navagation = useNavigation();
 
-  // allows users to reset passwords and login 
+  // allows users to reset passwords and login
   const onSignInpressed = () => {
-    // vladate user 
+    // vladate user
     console.warn("sending login to server");
     //navagation.navigate("home")
   };
@@ -36,24 +36,24 @@ const SigninScreen = () => {
     console.warn("time to reset password in db..");
     navagation.navigate("Reset password");
   };
-  
+
   const onSignUp = () => {
 
     console.warn(" new user .. need to create user account..");
-    navagation.navigate("signup");
+    navagation.navigate("home");
   };
 
 
 
   return (
     <ScrollView>
-    <View style={styles.root}> 
+    <View style={styles.root}>
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
 
     <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
     <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
 
-    
+
     <LoginButton buttontext="Sign in" onPress={onSignInpressed}/>
     <LoginButton buttontext="Forgot password" onPress={onForgotPassword} type = "teriary"/>
 
@@ -64,7 +64,7 @@ const SigninScreen = () => {
   )
 }
 
-// allows me to set the style of the componet 
+// allows me to set the style of the componet
 const styles = StyleSheet.create({
   root:{
     alignItems: 'center',
