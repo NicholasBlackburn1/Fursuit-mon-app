@@ -10,15 +10,12 @@ import {
 import React, {useEffect, useState} from 'react';
 
 // custom inputs
-import LoginInput from '../../componets/Textinput';
-import LoginButton from '../../componets/Button';
-import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
+
 import {useNavigation} from '@react-navigation/native';
 import WifiManager from "react-native-wifi-reborn";
+import Cards from '../../componets/Cards';
 
 const HomeScreen = () => {
-  const navagation = useNavigation();
-
   const [currentWifiSSID, setCurrentWifiSSID] = useState('');
 
   useEffect(() => {
@@ -33,17 +30,48 @@ const HomeScreen = () => {
 
     fetchCurrentWifiSSID();
   }, []);
+
+  const [cardDataList, setCardDataList] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        'http://192.168.4.1/fursuit/api/v1.0/devicelist',
+      );
+
+      const jsonData = await response.json();
+      console.warn("data from hardware"+jsonData)
+      setCardDataList(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+};
   return (
     <ScrollView>
       <View style={styles.root}>
         <Text style={styles.title}>
           {currentWifiSSID}
         </Text>
+
+        <View style={styles.container}>
+      {jsonData.map((item, index) => (
+        <Cards
+          key={index}
+          devicenum={item.devicenum}
+          module={item.module}
+          sensors={item.sensors}
+        />
+      ))}
+    </View>
       </View>
     </ScrollView>
   );
 };
-// allows me to set the styleWifiManager.getCurrentWifiSSID().then() of the componet
+// allows me to set the style of the componet
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
@@ -57,7 +85,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: '#051C60', container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
     margin: 10,
   },
   text: {
@@ -70,6 +103,12 @@ const styles = StyleSheet.create({
   },
   furry: {
     fontStyle: 'italic',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
   },
 });
 
