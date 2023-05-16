@@ -17,9 +17,11 @@
     "react-native": "0.71.3",
     "react-native-android-wifi": "^0.0.41",
     "react-native-gesture-handler": "^2.9.0",
+    "react-native-permissions": "^3.8.0",
     "react-native-reanimated": "^3.0.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-wifi-reborn": "^4.7.0",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "yarn": "^1.22.19"

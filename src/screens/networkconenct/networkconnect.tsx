@@ -14,7 +14,8 @@ import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
 import {useNavigation} from '@react-navigation/native';
-import wifi from 'react-native-android-wifi';
+import WifiManager from "react-native-wifi-reborn";
+
 const networkconenct = () => {
   const navagation = useNavigation();
 
@@ -24,51 +25,35 @@ const networkconenct = () => {
 
   const onregisterPress = async () => {
     console.warn('connecting wifi...');
-    wifi.setEnabled(true);
 
-    wifi.isEnabled((isEnabled) => {
-      if (isEnabled) {
-        console.log("wifi service enabled");
-      } else {
-        console.log("wifi service is disabled");
-      }
-    });
-
-
-    console.warn("disconnecting form current network");
-    wifi.disconnect();
-
-    console.warn("tryiong vto connect to current network");
-
-
-    try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
-          title: 'Wifi networks',
-          message: 'We need your permission in order to find wifi networks',
+          title: 'Location permission is required for WiFi connections',
+          message:
+            'This app needs location permission as this is required  ' +
+            'to scan for wifi networks.',
+          buttonNegative: 'DENY',
+          buttonPositive: 'ALLOW',
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Thank you for your permission! :)');
-      } else {
-        console.log(
-          'You will not able to retrieve wifi available networks list',
-        );
-      }
-    } catch (err) {
-      console.warn(err);
-    }
 
-    //found returns true if ssid is in the range
-    wifi.findAndConnect(wifinamme, password, found => {
-      if (found) {
-        console.log('wifi is in range');
+        WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
+          () => {
+            console.log("Connected successfully!");
+          },
+          () => {
+            console.log("Connection failed!");
+          }
+        );
+
       } else {
-        console.log('wifi is not in range');
+      // Permission denied
       }
-    });
-  };
+
+
+        };
 
   // for legal stuff press
   const onTermsPress = () => {
