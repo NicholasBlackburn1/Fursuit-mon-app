@@ -7,50 +7,60 @@ import {
   ScrollView,
   PermissionsAndroid,
 } from 'react-native';
-import React, { useState } from 'react'
+import React, {useState} from 'react';
 
 // custom inputs
 import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import wifi from 'react-native-android-wifi';
 const networkconenct = () => {
-
-
-
   const navagation = useNavigation();
-
-
 
   //sets up use sates
   const [wifinamme, setwifiname] = useState('');
   const [password, setPassword] = useState('');
 
   const onregisterPress = async () => {
-    console.warn("connecting wifi...");
+    console.warn('connecting wifi...');
 
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
-          'title': 'Wifi networks',
-          'message': 'We need your permission in order to find wifi networks'
-        }
-      )
+          title: 'Wifi networks',
+          message: 'We need your permission in order to find wifi networks',
+        },
+      );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("Thank you for your permission! :)");
+        console.log('Thank you for your permission! :)');
       } else {
-        console.log("You will not able to retrieve wifi available networks list");
+        console.log(
+          'You will not able to retrieve wifi available networks list',
+        );
       }
     } catch (err) {
-      console.warn(err)
+      console.warn(err);
     }
+
+    console.warn("disconnecting form current network");
+    wifi.disconnect();
+
+    console.warn("tryiong vto connect to current network");
+    //found returns true if ssid is in the range
+    wifi.findAndConnect(wifinamme, password, found => {
+      if (found) {
+        console.log('wifi is in range');
+      } else {
+        console.log('wifi is not in range');
+      }
+    });
   };
 
   // for legal stuff press
   const onTermsPress = () => {
-    console.warn("show  terms of use.");
+    console.warn('show  terms of use.');
   };
 
   const onPrivacyPress = () => {
@@ -75,7 +85,10 @@ const networkconenct = () => {
           issecure={true}
         />
 
-        <LoginButton buttontext="Connect to the Suite" onPress={onregisterPress} />
+        <LoginButton
+          buttontext="Connect to the Suite"
+          onPress={onregisterPress}
+        />
 
         <Text styles={styles}>
           By Connecting, you accept all our
@@ -88,11 +101,10 @@ const networkconenct = () => {
           </Text>
           <Text style={styles.furry}>*happy furry Noises*</Text>
         </Text>
-
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 // allows me to set the style of the componet
 const styles = StyleSheet.create({
   root: {
@@ -109,7 +121,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#051C60',
     margin: 10,
-
   },
   text: {
     color: 'gray',
