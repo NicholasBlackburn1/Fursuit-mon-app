@@ -6,11 +6,17 @@ import {
   StyleSheet,
   ScrollView,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import WifiManager from 'react-native-wifi-reborn';
 import Cards from '../../componets/Cards';
+import { useNavigation } from '@react-navigation/native';
+import Navagation from '../../navagation';
 
   const HomeScreen = () => {
+
+    const navagation = useNavigation();
+
     const [currentWifiSSID, setCurrentWifiSSID] = useState('');
     const [jsonData, setJsonData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,6 +54,13 @@ import Cards from '../../componets/Cards';
 
       fetchJsonData();
     }, []);
+
+    // on click for each module
+    function onPress(event: GestureResponderEvent): void {
+      navagation.navigate('Module', { module: jsonData.module, sensors: jsonData.sensors });
+
+    }
+
     return (
       <ScrollView>
         <View style={styles.root}>
@@ -56,9 +69,11 @@ import Cards from '../../componets/Cards';
         {loading ? (
           <ActivityIndicator style={styles.loadingIndicator} />
         ) : (
+          <TouchableOpacity onPress={onPress} style={styles.container}>
           <View style={styles.container}>
             <Cards moduleName={jsonData.module} sensorsName={jsonData.sensors} />
           </View>
+          </TouchableOpacity>
           )}
         </View>
       </ScrollView>
