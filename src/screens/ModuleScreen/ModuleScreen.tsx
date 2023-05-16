@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import Cards from '../../componets/Cards';
-import CardGauge from '../../componets/CardGauge/CardGauge';
 
-const ModuleScreen = ({ route }) => {
-  const { module, sensors } = route.params;
+
+const ModuleScreen = ({route}) => {
+  const {module, sensors} = route.params;
   const [jsonData, setJsonData] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchVitalsData = async () => {
       try {
-        const response = await fetch('http://192.168.4.1/fursuit/api/v1.0/app/getTempData');
+        const response = await fetch(
+          'http://192.168.4.1/fursuit/api/v1.0/app/getTempData',
+        );
         const data = await response.text();
         console.log('Response:', data);
 
@@ -44,11 +52,9 @@ const ModuleScreen = ({ route }) => {
   const renderCards = () => {
     if (module === 'Vitalzs') {
       return (
-
-         <View style={styles.container}>
-            <Cards moduleName="tempatrue" sensorsName={jsonData.temp} />
-            <Cards moduleName="humitity" sensorsName={jsonData.humity} />
-
+        <View style={styles.container}>
+          <Cards moduleName="tempatrue" sensorsName={jsonData.temp} />
+          <Cards moduleName="humitity" sensorsName={jsonData.humity} />
         </View>
       );
     }
