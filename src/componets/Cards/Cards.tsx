@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-
-const Cards = ({ module, sensors }) => {
+const Cards = ({ moduleName, sensorsName }) => {
   return (
     <View style={styles.cardContainer}>
-      <Text style={styles.title}>Module: {module}</Text>
-      <Text style={styles.description}>Sensors: {sensors}</Text>
+      <Text style={styles.title}>Module: {moduleName}</Text>
+      <Text style={styles.description}>Sensors: {sensorsName}</Text>
     </View>
   );
 };
@@ -23,14 +22,25 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
+  image: {
+    width: '100%',
+    height: 200,
+    marginBottom: 8,
+    borderRadius: 4,
+  },
   title: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
-    marginBottom: 4,
+    color: '#051C60',
   },
   description: {
     fontSize: 14,
     color: '#888',
+  },
+  loadingContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
   },
 });
 

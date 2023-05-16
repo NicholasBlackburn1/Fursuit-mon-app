@@ -32,10 +32,13 @@ import Cards from '../../componets/Cards';
       const fetchJsonData = async () => {
         try {
           const response = await fetch('http://192.168.4.1/fursuit/api/v1.0/devicelist');
-          const text = await response.text();
-          const data = JSON.parse(JSON.parse(text)[0]);
-          console.log('Fetched JSON data:', data);
-          setJsonData(data);
+          const data = await response.json();
+          const parsedData = JSON.parse(data[0]);
+          const module = parsedData.module;
+          const sensors = parsedData.sensors;
+          const extractedData = { module, sensors };
+          console.log('Fetched JSON data:', extractedData);
+          setJsonData(extractedData);
           setLoading(false);
         } catch (error) {
           console.log('Error fetching data:', error);
@@ -45,7 +48,6 @@ import Cards from '../../componets/Cards';
 
       fetchJsonData();
     }, []);
-
     return (
       <ScrollView>
         <View style={styles.root}>
@@ -55,7 +57,7 @@ import Cards from '../../componets/Cards';
           <ActivityIndicator style={styles.loadingIndicator} />
         ) : (
           <View style={styles.container}>
-            <Cards module={jsonData.module} sensors={jsonData.sensors} />
+            <Cards moduleName={jsonData.module} sensorsName={jsonData.sensors} />
           </View>
           )}
         </View>
