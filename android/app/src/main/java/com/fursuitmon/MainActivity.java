@@ -5,8 +5,16 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import android.os.Bundle;
-public class MainActivity extends ReactActivity {
+import com.devstepbcn.wifi.AndroidWifiPackage;  // <--- import
 
+
+public class MainActivity extends ReactActivity {
+  @Override
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+      new AndroidWifiPackage(), // <------ add here
+      new MainReactPackage());
+  }
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.

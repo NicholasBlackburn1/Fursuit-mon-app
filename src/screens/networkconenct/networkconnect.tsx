@@ -24,6 +24,15 @@ const networkconenct = () => {
 
   const onregisterPress = async () => {
     console.warn('connecting wifi...');
+    wifi.setEnabled(true);
+
+    wifi.isEnabled((isEnabled) => {
+      if (isEnabled) {
+        console.log("wifi service enabled");
+      } else {
+        console.log("wifi service is disabled");
+      }
+    });
 
     try {
       const granted = await PermissionsAndroid.request(
