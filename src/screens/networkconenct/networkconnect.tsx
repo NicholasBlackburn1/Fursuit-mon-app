@@ -24,6 +24,8 @@ const networkconenct = () => {
   const [password, setPassword] = useState('');
 
   const onregisterPress = async () => {
+
+
     console.warn('connecting wifi...');
 
       const granted = await PermissionsAndroid.request(
@@ -39,16 +41,25 @@ const networkconenct = () => {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
-        WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
-          () => {
-            console.log("Connected successfully!");
+        WifiManager.getCurrentWifiSSID().then(
+          ssid => {
+            console.log("Your current connected wifi SSID is " + ssid);
             navagation.navigate("home");
           },
           () => {
-            console.log("Connection failed!");
+            console.log("Cannot get current SSID! logging into the netwoerk");
+            WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
+              () => {
+                console.log("Connected successfully!");
+                navagation.navigate("home");
+              },
+              () => {
+                console.error('Error CANNOT CONNECT to wifi ap');
+              }
+            );
+
           }
         );
-
       } else {
       // Permission denied
       }
