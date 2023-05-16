@@ -17,6 +17,8 @@ import { useNavigation } from '@react-navigation/native';
 import wifi from 'react-native-android-wifi';
 const networkconenct = () => {
 
+
+
   const navagation = useNavigation();
 
 
@@ -25,24 +27,24 @@ const networkconenct = () => {
   const [wifinamme, setwifiname] = useState('');
   const [password, setPassword] = useState('');
 
-  const onregisterPress = () => {
+  const onregisterPress = async () => {
     console.warn("connecting wifi...");
 
     try {
-      const granted =  PermissionsAndroid.request(
+      const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
           'title': 'Wifi networks',
           'message': 'We need your permission in order to find wifi networks'
         }
-      );
+      )
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log("Thank you for your permission! :)");
       } else {
         console.log("You will not able to retrieve wifi available networks list");
       }
     } catch (err) {
-      console.warn(err);
+      console.warn(err)
     }
   };
 

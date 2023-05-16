@@ -7,7 +7,7 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-// imports of my screens 
+// imports of my screens
 import Navagation from './src/navagation/index'
 
 import {
