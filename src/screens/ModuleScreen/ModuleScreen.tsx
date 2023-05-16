@@ -1,53 +1,68 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import Cards from '../../componets/Cards';
-import CardGuage from '../../componets/CardGuage/CardGuage';
+import CardGauge from '../../componets/CardGauge/CardGauge';
 
 const ModuleScreen = ({ route }) => {
   const { module, sensors } = route.params;
-  console.log("data "+module);
-
-  const [jsonData, setJsonData] = useState([]);
-
+  const [jsonData, setJsonData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchvitals = async () => {
+    const fetchVitalsData = async () => {
       try {
         const response = await fetch('http://192.168.4.1/fursuit/api/v1.0/app/getTempData');
-        const data = await response.json();
-        const parsedData = JSON.parse(data[0]);
+        const data = await response.text();
+        console.log('Response:', data);
 
-        // parses all the sensor daya
-        const temp = parsedData.temp;
-        const hum = parsedData.humitity;
-        const rate = parsedData.rate;
+        // Parse the response data
+        let parsedData;
+        try {
+          parsedData = JSON.parse(data);
+        } catch (error) {
+          console.log('Error parsing JSON data:', error);
+          return;
+        }
 
-        const extractedData = {temp, hum, rate};
-        console.log('Fetched JSON data:', extractedData);
-        setJsonData(extractedData);
+        console.log('Parsed JSON data:', parsedData);
+
+        setJsonData(parsedData);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.log('Error fetching data:', error);
       }
     };
 
-    fetchvitals();
-  }, []);
+    if (module === 'Vitalzs') {
+      fetchVitalsData();
+    } else {
+      setLoading(false);
+    }
+  });
 
+  const renderCards = () => {
+    if (module === 'Vitalzs') {
+      return (
 
-    // Split the comma-separated string into an array
-    const sensorArray = sensors.split(',').map((sensor) => sensor.trim());
+         <View style={styles.container}>
+            <Cards moduleName="tempatrue" sensorsName={jsonData.temp} />
+            <Cards moduleName="humitity" sensorsName={jsonData.humity} />
 
+        </View>
+      );
+    }
+  };
 
   return (
     <ScrollView>
       <View style={styles.root}>
         <Text style={styles.title}>{module} Data</Text>
-        {sensorArray.map((sensor, index) => (
-          <View key={index} style={styles.card}>
-           <Cards moduleName={sensor} sensorsName="" />
-
-          </View>
-        ))}
+        {loading ? (
+          <ActivityIndicator style={styles.loadingIndicator} />
+        ) : (
+          renderCards()
+        )}
       </View>
     </ScrollView>
   );
@@ -63,11 +78,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#051C60',
     marginVertical: 10,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   loadingIndicator: {
     marginVertical: 20,
