@@ -31,25 +31,25 @@ const HomeScreen = () => {
     fetchCurrentWifiSSID();
   }, []);
 
-  const [cardDataList, setCardDataList] = useState([]);
+  const [jsonData, setJsonData] = useState([]);
+
 
   useEffect(() => {
-    fetchData();
+    const uwu = async () => {
+      try {
+        const response = await fetch('http://192.168.4.1/fursuit/api/v1.0/devicelist');
+        const text = await response.text();
+        const data = JSON.parse(text);
+        console.log(data)
+        setJsonData(data);
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
+    };
+
+    uwu();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        'http://192.168.4.1/fursuit/api/v1.0/devicelist',
-      );
-
-      const jsonData = await response.json();
-      console.warn("data from hardware"+jsonData)
-      setCardDataList(jsonData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-};
   return (
     <ScrollView>
       <View style={styles.root}>
@@ -61,7 +61,6 @@ const HomeScreen = () => {
       {jsonData.map((item, index) => (
         <Cards
           key={index}
-          devicenum={item.devicenum}
           module={item.module}
           sensors={item.sensors}
         />
@@ -108,7 +107,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
   },
 });
 
