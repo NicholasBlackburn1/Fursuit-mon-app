@@ -5,6 +5,7 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  PermissionsAndroid,
 } from 'react-native';
 import React, { useState } from 'react'
 
@@ -13,10 +14,11 @@ import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
 import { useNavigation } from '@react-navigation/native';
-
+import wifi from 'react-native-android-wifi';
 const networkconenct = () => {
 
   const navagation = useNavigation();
+
 
 
   //sets up use sates
@@ -25,6 +27,23 @@ const networkconenct = () => {
 
   const onregisterPress = () => {
     console.warn("connecting wifi...");
+
+    try {
+      const granted =  PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          'title': 'Wifi networks',
+          'message': 'We need your permission in order to find wifi networks'
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("Thank you for your permission! :)");
+      } else {
+        console.log("You will not able to retrieve wifi available networks list");
+      }
+    } catch (err) {
+      console.warn(err);
+    }
   };
 
   // for legal stuff press
@@ -34,13 +53,6 @@ const networkconenct = () => {
 
   const onPrivacyPress = () => {
     console.warn('show privacy polocy.');
-  };
-
-
-  const onSignInpressed = () => {
-
-    console.warn("redirect to login page");
-    navagation.navigate("login");
   };
 
   return (
