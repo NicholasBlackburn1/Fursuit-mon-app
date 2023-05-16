@@ -34,6 +34,13 @@ const networkconenct = () => {
       }
     });
 
+
+    console.warn("disconnecting form current network");
+    wifi.disconnect();
+
+    console.warn("tryiong vto connect to current network");
+
+
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -53,10 +60,6 @@ const networkconenct = () => {
       console.warn(err);
     }
 
-    console.warn("disconnecting form current network");
-    wifi.disconnect();
-
-    console.warn("tryiong vto connect to current network");
     //found returns true if ssid is in the range
     wifi.findAndConnect(wifinamme, password, found => {
       if (found) {
