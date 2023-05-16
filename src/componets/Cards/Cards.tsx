@@ -4,8 +4,8 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 const Cards = ({ moduleName, sensorsName }) => {
   return (
     <View style={styles.cardContainer}>
-      <Text style={styles.title}>Module: {moduleName}</Text>
-      <Text style={styles.description}>Sensors: {sensorsName}</Text>
+      <Text style={styles.title}>{moduleName}</Text>
+      <Text style={styles.description}>{sensorsName}</Text>
     </View>
   );
 };

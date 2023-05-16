@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 const ModuleScreen = ({ route }) => {
   const { module, sensors } = route.params;
-  console.log("data "+module + " " +sensors)
+  console.log("data "+module);
 
   return (
     <ScrollView>
