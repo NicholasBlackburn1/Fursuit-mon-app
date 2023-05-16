@@ -42,6 +42,7 @@ const networkconenct = () => {
         WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
           () => {
             console.log("Connected successfully!");
+            navagation.navigate("home");
           },
           () => {
             console.log("Connection failed!");
@@ -51,8 +52,6 @@ const networkconenct = () => {
       } else {
       // Permission denied
       }
-
-
         };
 
   // for legal stuff press

@@ -8,6 +8,7 @@ import SigninScreen from '../screens/SigninScreen/SigninScreen';
 import SignUPScreen from '../screens/CreateAccountScreen/SignupScreen';
 import RestPasswordScreen from '../screens/ResetPasswordScreen/ResetPasswordScreen';
 import networkconnect from '../screens/networkconenct/networkconnect';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const Navagation = () => {
       <Stack.Screen name ="signup" component={SignUPScreen}/>
       <Stack.Screen name ="Reset password" component={RestPasswordScreen}/>
       <Stack.Screen name ="network" component={networkconnect}/>
+      <Stack.Screen name ="home" component={HomeScreen}/>
       </Stack.Navigator>
 
      </NavigationContainer>
