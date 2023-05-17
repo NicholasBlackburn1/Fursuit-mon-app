@@ -13,10 +13,9 @@ const WhereFurryScreen = ({route}) => {
       try {
         const signalStrength = await WifiManager.getCurrentSignalStrength();
         console.log(
-          'Current Signal Strength:',
-          10 ^ (((57 - signalStrength) / 10) * 2.4),
+          'Current Signal Strength:'+signalStrength
         );
-        setsig(10 ^ (((57 - signalStrength) / 10) * 2.4));
+        setsig(10 ^ (((47 - signalStrength) / 10) * 0.9));
         // Do something with the signal strength value
       } catch (error) {
         console.log('Error fetching current signal strength:', error);
