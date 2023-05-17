@@ -5,22 +5,33 @@ import WifiManager from 'react-native-wifi-reborn';
 
 const WhereFurryScreen = ({route}) => {
     const {Wifiname} = route.params;
-  const [distance, setDistance] = useState(0);
 
-  useEffect(() => {
-    const calculateDistance = () => {
-      const connectedWifi = WifiManager.getCurrentWifiSSID();
-      // Implement your distance calculation logic here using the connectedWifi information
-      const calculatedDistance = /* Your distance calculation */
-      setDistance(calculatedDistance);
+    const [signal, setsig] = useState(Number);
+
+    useEffect(() => {
+    const getSignalStrength = async () => {
+      try {
+        const signalStrength = await WifiManager.getCurrentSignalStrength();
+        console.log(
+          'Current Signal Strength:',
+          10 ^ (((57 - signalStrength) / 10) * 2.4),
+        );
+        setsig(10 ^ (((57 - signalStrength) / 10) * 2.4));
+        // Do something with the signal strength value
+      } catch (error) {
+        console.log('Error fetching current signal strength:', error);
+      }
     };
+    getSignalStrength();
+    const intervalId = setInterval(getSignalStrength, 1000);
 
-    calculateDistance();
+    // Clean up interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Distance from {Wifiname}</Text>
+      <Text style={styles.title}>Distance from {signal}</Text>
       <View style={styles.gaugeContainer}>
         <Svg width={200} height={200}>
           <Circle
@@ -38,7 +49,7 @@ const WhereFurryScreen = ({route}) => {
             fill="transparent"
             stroke="#007aff"
             strokeWidth={12}
-            strokeDasharray={`${Math.PI * 2 * 80 * (distance / 100)}, ${Math.PI * 2 * 80}`}
+            strokeDasharray={`${Math.PI * 2 * 80 * (signal / 100)}, ${Math.PI * 2 * 80}`}
           />
           <SvgText
             x={100}
@@ -48,7 +59,7 @@ const WhereFurryScreen = ({route}) => {
             fontWeight="bold"
             fill="#007aff"
           >
-            {`${distance}m`}
+            {`${signal}m`}
           </SvgText>
         </Svg>
       </View>
