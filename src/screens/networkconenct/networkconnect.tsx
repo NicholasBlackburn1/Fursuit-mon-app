@@ -17,6 +17,49 @@ import {useNavigation} from '@react-navigation/native';
 import WifiManager from "react-native-wifi-reborn";
 
 const networkconenct = () => {
+
+
+  const sendPostRequest = async () => {
+    const currentDate = new Date();
+    const sec = currentDate.getSeconds();
+    const min = currentDate.getMinutes();
+    const hour = currentDate.getHours();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Month starts from 0
+    const year = currentDate.getFullYear();
+
+    const data = {
+      sec,
+      min,
+      hour,
+      day,
+      month,
+      year,
+    };
+
+    try {
+      const response = await fetch(
+        'http://192.168.4.1/fursuit/api/v1.0/setrtctime',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        },
+      );
+
+      if (response.ok) {
+        console.log('POST request successful');
+        console.log(data);
+      } else {
+        console.log('POST request failed');
+      }
+    } catch (error) {
+      console.error('Error sending POST request:', error);
+    }
+  };
+
   const navagation = useNavigation();
 
   //sets up use sates
@@ -47,6 +90,7 @@ const networkconenct = () => {
         WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
           () => {
             console.log("Connected successfully!");
+            sendPostRequest();
             navagation.navigate("home");
           },
           () => {

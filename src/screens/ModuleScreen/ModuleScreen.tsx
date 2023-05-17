@@ -59,7 +59,9 @@ const ModuleScreen = ({route}) => {
           <Cards moduleName="heart Rate" sensorsName={jsonData.rate} />
 
           <View style={styles.root}>
-          <LoginButton buttontext="Configure Temp Warnings" ></LoginButton>
+          <Text style={styles.title}>Safty Information</Text>
+          <Cards moduleName="Suiting Timer" sensorsName="todo timerleft" />
+
           </View>
 
         </View>
