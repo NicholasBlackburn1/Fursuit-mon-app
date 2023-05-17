@@ -71,7 +71,7 @@ const ModuleScreen = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <View style={styles.root}>
         <Text style={styles.title}>{module} Data</Text>
         {loading ? (
@@ -85,6 +85,10 @@ const ModuleScreen = ({route}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   root: {
     alignItems: 'center',
     padding: 20,
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: '#a7a7a7',
     marginVertical: 10,
   },
   loadingIndicator: {

@@ -66,7 +66,7 @@ import Navagation from '../../navagation';
       }
 
     return (
-      <ScrollView>
+      <ScrollView style={styles.back}>
         <View style={styles.root}>
           <Text style={styles.title}>{currentWifiSSID}</Text>
 
@@ -90,14 +90,19 @@ import Navagation from '../../navagation';
   };
 
   const styles = StyleSheet.create({
+    back: {
+      flex: 1,
+      backgroundColor: 'black',
+    },
+
     root: {
       alignItems: 'center',
       padding: 20,
     },
     title: {
-      fontSize: 24,
+      fontSize: 22,
       fontWeight: 'bold',
-      color: '#051C60',
+      color: '#9f9f9f',
       marginVertical: 10,
     },
     container: {

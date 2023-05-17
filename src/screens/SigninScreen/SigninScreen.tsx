@@ -46,7 +46,7 @@ const SigninScreen = () => {
 
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
     <View style={styles.root}>
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
 
@@ -66,6 +66,10 @@ const SigninScreen = () => {
 
 // allows me to set the style of the componet
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   root:{
     alignItems: 'center',
     padding: 20,

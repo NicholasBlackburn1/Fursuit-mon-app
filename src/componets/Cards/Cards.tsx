@@ -12,7 +12,7 @@ const Cards = ({ moduleName, sensorsName }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: '#121212',
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: '#a7a7a7',
   },
   description: {
     fontSize: 14,

@@ -113,7 +113,7 @@ const networkconenct = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.back}>
       <View style={styles.root}>
         <Text style={styles.title}>Connect to Mascot Controller </Text>
 
@@ -152,6 +152,11 @@ const networkconenct = () => {
 };
 // allows me to set the style of the componet
 const styles = StyleSheet.create({
+
+  back: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   root: {
     alignItems: 'center',
     padding: 20,
@@ -162,9 +167,9 @@ const styles = StyleSheet.create({
     maxHeight: 200,
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: '#a7a7a7',
     margin: 10,
   },
   text: {

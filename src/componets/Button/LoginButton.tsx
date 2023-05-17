@@ -13,7 +13,7 @@ const LoginButton = ({buttontext,onPress, type ="primary",bgcolor,fgcolor}) => {
         bgcolor ? {backgroundColor: bgcolor} : {},
       ]}>
       <Text style={
-        [styles.text, 
+        [styles.text,
       styles[`text_${type}`],
         fgcolor ? {color: fgcolor} : {},
         ]}>
@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   container_primary: {
-    backgroundColor: '#3B71F3',
+    backgroundColor: '#232323',
   },
 
   container_teriary: {},
 
   text: {
     fontWeight: 'bold',
-    color: 'white',
+    color: '#969696',
   },
   text_teriary: {
     color: "gray",

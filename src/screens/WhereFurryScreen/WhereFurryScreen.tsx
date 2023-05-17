@@ -57,11 +57,16 @@ const WhereFurryScreen = ({route}) => {
 };
 
 const styles = StyleSheet.create({
+  back: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
     paddingTop: 50,
     paddingBottom: 50,
+    backgroundColor: 'black',
   },
   title: {
     fontSize: 24,

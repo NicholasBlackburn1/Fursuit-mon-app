@@ -7,20 +7,20 @@ const LoginInput = ({name,setValue, placeholder, issecure}) => {
       <TextInput value={name}
       onChangeText={setValue}
       placeholder={placeholder}
-      style={styles.input} 
+      style={styles.input}
       secureTextEntry={issecure}/>
     </View>
   );
 }
 
 
-// allows me to set the style of the componet 
+// allows me to set the style of the componet
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'White',
+    backgroundColor: '#121212',
     width: '100%',
 
-    borderColor:"#E8E8E8",
+    borderColor:"#242424",
     borderWidth: 1,
     borderRadius:  5,
 
