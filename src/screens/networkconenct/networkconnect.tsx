@@ -7,13 +7,13 @@ import {
   ScrollView,
   PermissionsAndroid,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 // custom inputs
 import LoginInput from '../../componets/Textinput';
 import LoginButton from '../../componets/Button';
 import SocialSignButtons from '../../componets/SocialSignInButtons/SocialSignin';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import WifiManager from "react-native-wifi-reborn";
 
 const networkconenct = () => {
@@ -69,39 +69,39 @@ const networkconenct = () => {
   const onregisterPress = async () => {
     console.warn('connecting wifi...');
 
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        {
-          title: 'Location permission is required for WiFi connections',
-          message:
-            'This app needs location permission as this is required  ' +
-            'to scan for wifi networks.',
-          buttonNegative: 'DENY',
-          buttonPositive: 'ALLOW',
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Location permission is required for WiFi connections',
+        message:
+          'This app needs location permission as this is required  ' +
+          'to scan for wifi networks.',
+        buttonNegative: 'DENY',
+        buttonPositive: 'ALLOW',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+
+      // checks if wifi name is connected
+
+
+
+
+      WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
+        () => {
+          console.log("Connected successfully!");
+          sendPostRequest();
+          navagation.navigate("home");
         },
+        () => {
+          console.log("Connection failed!");
+        }
       );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
-        // checks if wifi name is connected
-
-
-
-
-        WifiManager.connectToProtectedSSID(wifinamme, password, false).then(
-          () => {
-            console.log("Connected successfully!");
-            sendPostRequest();
-            navagation.navigate("home");
-          },
-          () => {
-            console.log("Connection failed!");
-          }
-        );
-
-      } else {
+    } else {
       // Permission denied
-      }
-        };
+    }
+  };
 
   // for legal stuff press
   const onTermsPress = () => {

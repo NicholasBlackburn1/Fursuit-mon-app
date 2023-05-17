@@ -10,6 +10,7 @@ import RestPasswordScreen from '../screens/ResetPasswordScreen/ResetPasswordScre
 import networkconnect from '../screens/networkconenct/networkconnect';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ModuleScreen from '../screens/ModuleScreen/ModuleScreen';
+import WhereFurryScreen from '../screens/WhereFurryScreen/WhereFurryScreen';
 const Stack = createNativeStackNavigator();
 
 const Navagation = () => {
@@ -25,6 +26,7 @@ const Navagation = () => {
       <Stack.Screen name ="network" component={networkconnect}/>
       <Stack.Screen name ="home" component={HomeScreen}/>
       <Stack.Screen name="Module" component={ModuleScreen} />
+      <Stack.Screen name="wherefurry" component={WhereFurryScreen} />
       </Stack.Navigator>
 
      </NavigationContainer>
