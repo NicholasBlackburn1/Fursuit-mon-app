@@ -57,15 +57,26 @@ import Navagation from '../../navagation';
 
     // on click for each module
     function onPress(event: GestureResponderEvent): void {
-      navagation.navigate('Module', { module: jsonData.module, sensors: jsonData.sensors });
+      navagation.navigate('Module', { module: module, sensors: sensors });
 
     }
 
+      // Where is the furry at
+      function onFindmyfurry(event: GestureResponderEvent): void {
+        navagation.navigate('Module', { module: module, sensors: sensors });
+
+
+      }
+
     return (
       <ScrollView>
-        <View style={styles.root}>
           <Text style={styles.title}>{currentWifiSSID}</Text>
 
+          <TouchableOpacity onPress={onFindmyfurry} style={styles.container}>
+          <View style={styles.container}>
+            <Cards moduleName="Where is the Furyy at?" sensorsName="click here to find them" />
+          </View>
+          </TouchableOpacity>
         {loading ? (
           <ActivityIndicator style={styles.loadingIndicator} />
         ) : (
