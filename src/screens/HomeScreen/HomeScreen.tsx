@@ -40,11 +40,9 @@ import Navagation from '../../navagation';
           const response = await fetch('http://192.168.4.1/fursuit/api/v1.0/devicelist');
           const data = await response.json();
           const parsedData = JSON.parse(data[0]);
-          const module = parsedData.module;
-          const sensors = parsedData.sensors;
-          const extractedData = { module, sensors };
-          console.log('Fetched JSON data:', extractedData);
-          setJsonData(extractedData);
+
+          console.log('Fetched JSON data:', parsedData);
+          setJsonData(parsedData);
           setLoading(false);
         } catch (error) {
           console.log('Error fetching data:', error);
@@ -57,7 +55,8 @@ import Navagation from '../../navagation';
 
     // on click for each module
     function onPress(event: GestureResponderEvent): void {
-      navagation.navigate('Module', { module: module, sensors: sensors });
+
+      navagation.navigate('Module', { module: jsonData.module, sensors: jsonData.sensors });
 
     }
 

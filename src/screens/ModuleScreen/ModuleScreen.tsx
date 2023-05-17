@@ -11,7 +11,7 @@ import LoginButton from '../../componets/Button/LoginButton';
 
 
 const ModuleScreen = ({route}) => {
-  const {module, sensors} = route.params;
+  const { module, sensors } = route.params;
   const [jsonData, setJsonData] = useState({});
   const [loading, setLoading] = useState(true);
 
