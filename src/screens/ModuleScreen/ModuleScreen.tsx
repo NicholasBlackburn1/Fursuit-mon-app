@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Cards from '../../componets/Cards';
+import LoginButton from '../../componets/Button/LoginButton';
 
 
 const ModuleScreen = ({route}) => {
@@ -55,7 +56,14 @@ const ModuleScreen = ({route}) => {
         <View style={styles.container}>
           <Cards moduleName="tempatrue" sensorsName={jsonData.temp} />
           <Cards moduleName="humitity" sensorsName={jsonData.humity} />
+          <Cards moduleName="heart Rate" sensorsName={jsonData.rate} />
+
+          <View style={styles.root}>
+          <LoginButton buttontext="Configure Temp Warnings" ></LoginButton>
+          </View>
+
         </View>
+
       );
     }
   };
