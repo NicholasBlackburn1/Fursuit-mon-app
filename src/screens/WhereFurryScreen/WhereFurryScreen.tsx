@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import Svg, { Circle, Text as SvgText } from 'react-native-svg';
 import WifiManager from 'react-native-wifi-reborn';
+import Cards from '../../componets/Cards/Cards';
 
 const WhereFurryScreen = ({route}) => {
     const {Wifiname} = route.params;
-
+    var isnere = null;
     const [signal, setsig] = useState(null);
     const [normssri, setnormssri] = useState(Number);
     useEffect(() => {
@@ -17,13 +18,10 @@ const WhereFurryScreen = ({route}) => {
           'Current Signal Strength:'+signalStrength
         );
 
-        const cal = 10 ^ (((-47 - signalStrength) / 10) * 2.4 * 3.28);
+        var cal = 10 ^ (((-47 - signalStrength) / 10) * 2.4 * 3.28);
+        isnere = cal
 
-         if (cal < 0){
-          setsig("next to u");
-         } else{
-          setsig(cal);
-         }
+       setsig(cal);
         // Do something with the signal strength value
       } catch (error) {
         console.log('Error fetching current signal strength:', error);
@@ -38,8 +36,17 @@ const WhereFurryScreen = ({route}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Distance from {Wifiname}</Text>
-      <Text style={styles.title}> {Wifiname} is {signal}</Text>
-      <Text style={styles.title}>norm rssi from {normssri}</Text>
+
+      {signal- < 0 ? (
+
+        <Cards moduleName={Wifiname} sensorsName="is here" />
+
+
+        ) : (
+        <Cards moduleName={Wifiname} sensorsName={signal} />
+          )}
+      <Cards moduleName="norm rssi from" sensorsName={normssri} />
+
       <View style={styles.gaugeContainer}>
         <Svg width={200} height={200}>
           <Circle
@@ -91,6 +98,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+  },
+
+  ok: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#90ee90',
   },
   gaugeContainer: {
     alignItems: 'center',
