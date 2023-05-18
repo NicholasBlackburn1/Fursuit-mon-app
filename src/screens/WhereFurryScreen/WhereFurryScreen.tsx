@@ -37,10 +37,13 @@ const WhereFurryScreen = ({route}) => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Distance from {Wifiname}</Text>
 
-      {signal- < 0 ? (
+      {signal < 0 ? (
 
-        <Cards moduleName={Wifiname} sensorsName="is here" />
 
+        <Text style={styles.ok}>
+
+          {Wifiname} is here
+        </Text>
 
         ) : (
         <Cards moduleName={Wifiname} sensorsName={signal} />
