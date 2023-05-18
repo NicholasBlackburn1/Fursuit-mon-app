@@ -6,23 +6,31 @@ import WifiManager from 'react-native-wifi-reborn';
 const WhereFurryScreen = ({route}) => {
     const {Wifiname} = route.params;
 
-    const [signal, setsig] = useState(Number);
-
+    const [signal, setsig] = useState(null);
+    const [normssri, setnormssri] = useState(Number);
     useEffect(() => {
     const getSignalStrength = async () => {
       try {
         const signalStrength = await WifiManager.getCurrentSignalStrength();
+        setnormssri(signalStrength);
         console.log(
           'Current Signal Strength:'+signalStrength
         );
-        setsig(10 ^ (((47 - signalStrength) / 10) * 0.9));
+
+        const cal = 10 ^ (((-47 - signalStrength) / 10) * 2.4 * 3.28);
+
+         if (cal < 0){
+          setsig("next to u");
+         } else{
+          setsig(cal);
+         }
         // Do something with the signal strength value
       } catch (error) {
         console.log('Error fetching current signal strength:', error);
       }
     };
     getSignalStrength();
-    const intervalId = setInterval(getSignalStrength, 1000);
+    const intervalId = setInterval(getSignalStrength, 100);
 
     // Clean up interval when the component unmounts
     return () => clearInterval(intervalId);
@@ -30,7 +38,8 @@ const WhereFurryScreen = ({route}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Distance from {Wifiname}</Text>
-      <Text style={styles.title}>Distance from {signal}</Text>
+      <Text style={styles.title}> {Wifiname} is {signal}</Text>
+      <Text style={styles.title}>norm rssi from {normssri}</Text>
       <View style={styles.gaugeContainer}>
         <Svg width={200} height={200}>
           <Circle
@@ -58,7 +67,7 @@ const WhereFurryScreen = ({route}) => {
             fontWeight="bold"
             fill="#007aff"
           >
-            {`${signal}m`}
+            {`${signal}ft`}
           </SvgText>
         </Svg>
       </View>
