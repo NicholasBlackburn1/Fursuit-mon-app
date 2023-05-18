@@ -32,9 +32,9 @@ const SigninScreen = () => {
     //navagation.navigate("home")
   };
 
-  const onForgotPassword = () =>{
+  const onAboutUS = () =>{
     console.warn("time to reset password in db..");
-    navagation.navigate("Reset password");
+    navagation.navigate("aboutus");
   };
 
   const onSignUp = () => {
@@ -50,14 +50,11 @@ const SigninScreen = () => {
     <View style={styles.root}>
     <Image source={Logo} style={[styles.logo, {height: height * 0.3}]}  resizeMode='contain'></Image>
 
-    <Logininput placeholder="Email" value ={username} setValue={setUsername}/>
-    <Logininput placeholder="Password" value ={password} setValue={setPassword} issecure= {true}/>
+    <LoginButton buttontext="Connect to Suit" onPress={onSignUp}/>
+    <LoginButton buttontext="Don't Have an Mascot Controller?" onPress={onSignUp} type = "teriary"/>
 
 
-    <LoginButton buttontext="Sign in" onPress={onSignInpressed}/>
-    <LoginButton buttontext="Forgot password" onPress={onForgotPassword} type = "teriary"/>
-
-    <LoginButton buttontext="Don't Have an Account?" onPress={onSignUp} type = "teriary"/>
+    <LoginButton buttontext="About Us" onPress={onAboutUS} type = "teriary"/>
 
     </View>
     </ScrollView>
