@@ -66,8 +66,7 @@ const ModuleScreen = ({route}) => {
           <Cards moduleName="heart Rate" sensorsName={jsonData.rate} />
 
           <View style={styles.root}>
-          <Text style={styles.title}>Safty Information</Text>
-            <LoginButton buttontext="Vitalsz Data" onPress={mascotheat} type = "teriary" />
+            <LoginButton buttontext="View All Data" onPress={mascotheat} />
 
 
           </View>

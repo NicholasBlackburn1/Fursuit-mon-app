@@ -1,61 +1,60 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Card, ProgressCircle } from 'react-native-paper';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import * as reactNativePaper from 'react-native-paper';
 import Cards from '../../componets/Cards/Cards';
-import { useNavigation } from '@react-navigation/native';
-
+import WifiManager from "react-native-wifi-reborn";
 const MascotScreen = () => {
 
 
+    const [currentWifiSSID, setCurrentWifiSSID] = useState('');
+
+    useEffect(() => {
+      const fetchCurrentWifiSSID = async () => {
+        try {
+          const wifiSSID = await WifiManager.getCurrentWifiSSID();
+          setCurrentWifiSSID(wifiSSID);
+        } catch (error) {
+          console.log('Error fetching current Wi-Fi SSID:', error);
+        }
+      };
+
+      fetchCurrentWifiSSID();
+    }, []);
+
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Fursuit Safety Info</Text>
-
-      <View style={styles.cardContainer}>
-        <View style={styles.card}>
-          <Cards moduleName="Heart Rate" sensorsName="" />
-
-        </View>
-
-        <View style={styles.card}>
-        <Cards moduleName="Humitiy" sensorsName="" />
-        </View>
-
-        <View style={styles.card}>
-        <Cards moduleName="Temp" sensorsName="" />
-        </View>
-      </View>
-
-      <View style={styles.progressContainer}>
-        <ProgressCircle
-          style={styles.progressCircle}
-          progress={0.75} // Replace with actual countdown timer progress
-          size={150}
-          thickness={5}
-          color="blue"
-        />
-        {/* Add countdown timer text here */}
-      </View>
-    </View>
+    <ScrollView style={styles.back}>
+        <View style={styles.root}>
+                <Text style={styles.title}>{currentWifiSSID} HeathData</Text>
+                </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 20,
-  },
+    back: {
+        flex: 1,
+        backgroundColor: 'black',
+      },
+
+      root: {
+        alignItems: 'center',
+        padding: 20,
+      },
+      title: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#9f9f9f',
+        marginVertical: 10,
+      },
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      loadingIndicator: {
+        marginVertical: 20,
+      },
   card: {
     width: '30%',
     marginBottom: 10,
