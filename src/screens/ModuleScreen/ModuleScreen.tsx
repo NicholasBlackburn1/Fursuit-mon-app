@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const ModuleScreen = ({route}) => {
-  const { module, sensors } = route.params;
+  const { name, sensors } = route.params;
   const [jsonData, setJsonData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -57,7 +57,7 @@ const ModuleScreen = ({route}) => {
   };
 
   const configure = () => {
-    navagation.navigate("settings");
+    navagation.navigate("settings",{module:name });
   };
 
 
