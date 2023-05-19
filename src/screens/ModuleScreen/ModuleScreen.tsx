@@ -56,17 +56,31 @@ const ModuleScreen = ({route}) => {
     navagation.navigate("mascot");
   };
 
+  const configure = () => {
+    navagation.navigate("settings");
+  };
+
+
 
   const renderCards = () => {
     if (module === 'Vitalzs') {
       return (
         <View style={styles.container}>
+
+        <View style={styles.root}>
+        <LoginButton buttontext="configure settings" onPress={configure} />
+        </View>
+
+        <View style={styles.root}>
+          <Text style={styles.desc}>{module} Data</Text>
           <Cards moduleName="tempatrue" sensorsName={jsonData.temp} />
           <Cards moduleName="humitity" sensorsName={jsonData.humity} />
           <Cards moduleName="heart Rate" sensorsName={jsonData.rate} />
 
+        </View>
           <View style={styles.root}>
-            <LoginButton buttontext="View All Data" onPress={mascotheat} />
+
+          <LoginButton buttontext="View All Data" onPress={mascotheat} />
 
 
           </View>
@@ -80,7 +94,7 @@ const ModuleScreen = ({route}) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.root}>
-        <Text style={styles.title}>{module} Data</Text>
+        <Text style={styles.title}>{module} Information</Text>
         {loading ? (
           <ActivityIndicator style={styles.loadingIndicator} />
         ) : (
@@ -103,6 +117,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#a7a7a7',
+    marginVertical: 10,
+  },
+  desc: {
+    fontSize: 22,
+
     color: '#a7a7a7',
     marginVertical: 10,
   },

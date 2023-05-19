@@ -75,11 +75,14 @@ import Navagation from '../../navagation';
             <Cards moduleName="Where is the Furyy at?" sensorsName="click here to find" />
           </View>
           </TouchableOpacity>
+
           <View style={styles.container}>
           <Text style={styles.title}> Modules</Text>
           </View>
         {loading ? (
+
           <ActivityIndicator style={styles.loadingIndicator} />
+
         ) : (
           <TouchableOpacity onPress={onPress} style={styles.container}>
           <View style={styles.container}>
@@ -105,6 +108,10 @@ import Navagation from '../../navagation';
     title: {
       fontSize: 22,
       fontWeight: 'bold',
+      color: '#9f9f9f',
+      marginVertical: 10,
+    },   descr: {
+      fontSize: 12,
       color: '#9f9f9f',
       marginVertical: 10,
     },
