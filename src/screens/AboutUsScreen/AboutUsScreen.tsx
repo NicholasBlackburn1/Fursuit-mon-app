@@ -84,6 +84,7 @@ import Navagation from '../../navagation';
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#a7a7a7',
   },
   description: {
     fontSize: 16,

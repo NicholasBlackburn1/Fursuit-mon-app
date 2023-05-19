@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Cards from '../../componets/Cards';
 import LoginButton from '../../componets/Button/LoginButton';
+import { useNavigation } from '@react-navigation/native';
 
 
 const ModuleScreen = ({route}) => {
@@ -50,6 +51,12 @@ const ModuleScreen = ({route}) => {
     }
   });
 
+  const navagation = useNavigation();
+  const mascotheat = () => {
+    navagation.navigate("mascot");
+  };
+
+
   const renderCards = () => {
     if (module === 'Vitalzs') {
       return (
@@ -60,7 +67,8 @@ const ModuleScreen = ({route}) => {
 
           <View style={styles.root}>
           <Text style={styles.title}>Safty Information</Text>
-          <Cards moduleName="Suiting Timer" sensorsName="todo timerleft" />
+            <LoginButton buttontext="Vitalsz Data" onPress={mascotheat} type = "teriary" />
+
 
           </View>
 
